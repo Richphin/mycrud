@@ -18,7 +18,10 @@ function Userform(props) {
     }
 
     function handleonSubmit() {
-        props.adduser(state);
+        let userid= 10000 + Math.random() * 10000000000;
+        let user= {...state, id:userid}
+        console.log(user)
+        props.adduser(user);
     }
 
     return(
