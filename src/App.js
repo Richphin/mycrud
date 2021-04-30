@@ -1,31 +1,30 @@
 import { useState } from 'react';
 import './App.css';
-import Userform from './components/userform';
-import Userlist from './components/userlist';
+import ContactForm from './components/contactForm';
+import Contacts from './components/contacts';
+
 
 function App() {
-  const[users,userstate]=useState([])
+  const[users,setstate]=useState([])
 
-  function adduser(user) {
-    userstate([
-      ...users,user
-    ]);
-  }
-  function deleteuser(id) {
-    let newUsers= users.filter((user) => user.id !==id)
-    userstate(newUsers)
+  function handleAddContacts(user) {
+    setstate([
+      ...users, user
+    ])
+    
   }
 
+  
+  
 
  return(
-  <div className="container">
-  <div className="col-md-6 formcontainer" >
-    <Userform adduser={adduser}/>
-  </div>
-  <div className="col-md-6">
-    <Userlist allUsers={users} delete={deleteuser} />
-  </div>
-</div>
+   <div>
+     <div><ContactForm handleAddContacts={handleAddContacts}/></div>
+     <div><Contacts allUsers={users}/></div>
+     
+     
+   </div>
+  
  )
 }
 
